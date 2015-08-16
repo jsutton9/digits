@@ -8,6 +8,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
+from digits_lib import write_prediction
+
 def to_img(data, mean):
     adj = 1 - data - mean
     img = []
@@ -84,4 +86,4 @@ print "guesses_test: %.2fs" % (time()-t0)
 
 print "test accuracy: %f" % (1.0*guesses_test.correct.sum() / guesses_test.shape[0])
 
-write_prediction(clf, "logistic_out.csv")
+write_prediction(model, "logistic_out.csv")

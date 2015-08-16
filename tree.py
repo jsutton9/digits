@@ -7,7 +7,7 @@ import numpy as np
 from sklearn.grid_search import GridSearchCV
 from sklearn.ensemble import RandomForestClassifier
 
-from digits_lib import get_data, predict
+from digits_lib import get_data, predict, write_prediction
 
 X_train, X_test, y_train, y_test = get_data()
 

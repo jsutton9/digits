@@ -55,8 +55,9 @@ def write_prediction(clf, f_name="out.csv"):
     X = prepare_X(pd.read_csv("target.csv"))
     pred = clf.predict(X)
 
-    f = open(f_name)
-    for x in pred:
-        f.write("%d\n" % x)
+    f = open(f_name, "w")
+    f.write("ImageId,Label\n")
+    for i in xrange(pred.shape[0]):
+        f.write("%d,%d\n" % (i+1,pred[i]))
     f.close()
     print "predict: %.2fs" % (time()-t0)

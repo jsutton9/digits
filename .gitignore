@@ -1,0 +1,7 @@
+*.swp
+*.pyc
+*.pkl
+*.npy
+*bin.csv
+*out.csv
+pylearn2_train.py
