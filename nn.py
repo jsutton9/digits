@@ -73,25 +73,6 @@ def timed_run(model, time_limit):
 
     return times, accuracies
 
-def patchify(image, size, overlap):
-    padding = (overlap-28) % (size-overlap)
-    image_list = image.tolist()
-    image_matrix = [image_list[28*i:28*(i+1)] for i in xrange(28)]
-    for row in image_matrix:
-        row += row[:padding]
-    image_matrix += image_matrix[:padding]
-
-    patch_vecs = []
-    for y1 in xrange(0, 28-overlap, size-overlap):
-        y2 = y1 + size
-        rows = image_matrix[y1:y2]
-        for x1 in xrange(0, 28-overlap, size-overlap):
-            x2 = x1 + size
-            patch_matrix = [row[x1:x2] for row in rows]
-            patch_vecs.append(reduce(lambda a,b:a+b, patch_matrix))
-
-    return patch_vecs
-
 X_train, y_train = prep_data("data/train_bin.csv")
 X_test, y_test = prep_data("data/test_bin.csv")
 X_target = prep_data("data/target_adj.csv", has_y=False)
