@@ -75,19 +75,19 @@ def timed_run(model, time_limit):
 
 X_train, y_train = prep_data("data/train_bin.csv")
 X_test, y_test = prep_data("data/test_bin.csv")
-X_target = prep_data("data/target_adj.csv", has_y=False)
+#X_target = prep_data("data/target_adj.csv", has_y=False)
 
-'''
 model = build_model([1000, 1600, 400])
-#model.load_weights("data/1000-1600-400-0hrs.hdf5")
-times, accuracies = timed_run(model, 60)
-model.save_weights("data/1000-1600-400-1hrs.hdf5", overwrite=True)
+model.load_weights("data/1000-1600-400-1hrs.hdf5")
+times, accuracies = timed_run(model, 9*60)
+model.save_weights("data/1000-1600-400-10hrs.hdf5", overwrite=True)
 plt.plot(times, accuracies, label="[1000, 1600, 400]")
-'''
 
+'''
 model = build_model([500, 200])
 model.load_weights("data/500-200-8hrs.hdf5")
 write_predictions(model, X_target, "data/500-200-8hrs_out.csv")
+'''
 
-#plt.legend(loc="lower right")
-#plt.show()
+plt.legend(loc="lower right")
+plt.show()
